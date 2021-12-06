@@ -14,13 +14,13 @@ export default {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  mode: 'spa',
+  ssr: false,
   // ssr: false,
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
-  target: 'server',
+  target: 'static',
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
@@ -116,6 +116,10 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+
+    // filenames: {
+    //   chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].[contenthash].js')
+    // },
     parallel: true,
     plugins: [
       new MonacoEditorWebpackPlugin({
@@ -220,13 +224,18 @@ export default {
     workbox: {
       /* workbox options */
       // publicPath: './_nuxt',
-      assetsURLPattern: /\/_nuxt\//
+      assetsURLPattern: /\/_nuxt\//,
+      config: { debug: true },
+      enabled: true
     },
 
     icon: { publicPath: './' },
     manifest: {
       name: 'NocoDB',
-      start_url: '../'
+      start_url: '../?standalone=true'
+    },
+    meta: {
+      favicon: false
     }
   }
 }

@@ -13,7 +13,9 @@ class XcLibGui {
 
     const router = express.Router();
     router.use(nocache());
-    router.use('/', express.static(path.join(__dirname, 'dist')));
+    router.use('/', express.static(path.join(__dirname, 'dist'), {
+      etag: false
+    }));
     return router;
   }
 

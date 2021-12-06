@@ -49,7 +49,7 @@
                   @click="projectsLoad"
                 >
                   mdi-refresh
-                </x-icon>&nbsp;
+                </x-icon>
                 <!--                </x-btn>-->
               </h1>
             </v-row>
