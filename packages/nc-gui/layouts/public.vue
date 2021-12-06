@@ -38,8 +38,11 @@
 </template>
 
 <script>
+import layout from '~/mixins/layout'
+
 export default {
-  name: 'Public'
+  name: 'Public',
+  mixins: [layout]
 }
 </script>
 

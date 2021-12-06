@@ -565,6 +565,7 @@ import { copyTextToClipboard } from '@/helpers/xutils'
 import Snackbar from '~/components/snackbar'
 import Language from '~/components/utils/language'
 import Loader from '~/components/loader'
+import layout from '~/mixins/layout'
 
 export default {
   components: {
@@ -579,6 +580,7 @@ export default {
     settings,
     xTerm
   },
+  mixins: [layout],
   data: () => ({
     ghStarText: 'Star',
     swaggerOrGraphiqlUrl: null,
@@ -666,7 +668,7 @@ export default {
       }
     }
   },
-  mounted() {
+  async mounted() {
     this.selectedEnv = this.$store.getters['project/GtrActiveEnv']
     this.loadProjectInfo()
     setInterval(() => this.ghStarText = this.ghStarText === 'Star' ? 'Fork' : 'Star', 60000)

@@ -11,8 +11,11 @@
 
 <script>
 
+import layout from '~/mixins/layout'
+
 export default {
   components: {},
+  mixins: [layout],
   data: () => ({}),
   computed: {},
   watch: {},

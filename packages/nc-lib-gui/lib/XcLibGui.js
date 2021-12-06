@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const nocache = require('nocache');
 
 
 class XcLibGui {
@@ -11,6 +12,7 @@ class XcLibGui {
   expressMiddleware() {
 
     const router = express.Router();
+    router.use(nocache());
     router.use('/', express.static(path.join(__dirname, 'dist')));
     return router;
   }

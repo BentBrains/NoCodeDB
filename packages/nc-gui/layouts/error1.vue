@@ -14,7 +14,10 @@
 </template>
 
 <script>
+import layout from '~/mixins/layout'
+
 export default {
+  mixins: [layout],
   layout: 'empty',
   props: {
     error: {

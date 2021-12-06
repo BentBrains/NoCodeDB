@@ -58,7 +58,8 @@ export default {
     '@/plugins/globalEventBus',
     '@/plugins/ncApis',
     '~/plugins/i18n.js',
-    { src: '~plugins/projectLoader.js', ssr: false }
+    { src: '~plugins/projectLoader.js', ssr: false },
+    { src: '~plugins/pwa.js', ssr: false }
   ],
   /*
   ** Auto import components
@@ -69,7 +70,8 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/pwa'
   ],
   /*
   ** Nuxt.js modules
@@ -97,6 +99,7 @@ export default {
   router: {
     mode: 'hash',
     // base: '/xc/',
+    base: './',
     middleware: ['auth']
   },
   vuetify: {
@@ -126,7 +129,7 @@ export default {
       })
     ],
     // publicPath: process.env.NODE_ENV === 'production' ? `https://cdn.jsdelivr.net/npm/nc-lib-gui@${version}/lib/dist/` : undefined,
-    publicPath: process.env.NODE_ENV === 'production' ? './_nuxt/' : undefined,
+    // publicPath: process.env.NODE_ENV === 'production' ? './_nuxt/' : undefined,
     extend(config, { isDev, isClient }) {
       if (isDev) {
         config.devtool = isClient ? 'source-map' : 'inline-source-map'
@@ -188,7 +191,7 @@ export default {
         // };
       }
       if (!isDev) {
-        config.output.publicPath = './_nuxt/'
+        // config.output.publicPath = './_nuxt/'
       }
 
       return config
@@ -216,14 +219,18 @@ export default {
   pwa: {
     workbox: {
       /* workbox options */
-      assetsURLPattern: './_nuxt/',
-      pagesURLPattern: './'
+      // publicPath: './_nuxt',
+      assetsURLPattern: /\/_nuxt\//
     },
+
+    icon: { publicPath: './' },
     manifest: {
-      publicPath: './'
+      name: 'NocoDB',
+      start_url: '../'
     }
   }
 }
+
 /**
  * @copyright Copyright (c) 2021, Xgene Cloud Ltd
  *
