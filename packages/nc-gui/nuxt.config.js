@@ -118,7 +118,7 @@ export default {
   build: {
 
     filenames: {
-      chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].128.[contenthash].js')
+      chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].129.[contenthash].js')
     },
     parallel: true,
     plugins: [
@@ -222,8 +222,6 @@ export default {
   },
   pwa: {
     workbox: {
-      /* workbox options */
-      // publicPath: './_nuxt',
       assetsURLPattern: /\/_nuxt\//,
       config: { debug: true }
     },
@@ -231,10 +229,8 @@ export default {
     icon: { publicPath: './' },
     manifest: {
       name: 'NocoDB',
-      start_url: '../?standalone=true'
-    },
-    meta: {
-      favicon: false
+      start_url: '../?standalone=true',
+      theme_color: '#ffffff'
     }
   }
 }
