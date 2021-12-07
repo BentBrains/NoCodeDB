@@ -118,7 +118,7 @@ export default {
   build: {
 
     filenames: {
-      chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].129.[contenthash].js')
+      chunk: ({ isDev }) => (isDev ? '[name].js' : `[id].${version}.[contenthash].js`)
     },
     parallel: true,
     plugins: [
@@ -223,7 +223,13 @@ export default {
   pwa: {
     workbox: {
       assetsURLPattern: /\/_nuxt\//,
-      config: { debug: true }
+      config: { debug: true },
+      cacheOptions: {
+        revision: version,
+        directoryIndex: './'
+      },
+      cleanupOutdatedCaches: false,
+      cacheAssets: false
     },
 
     icon: { publicPath: './' },
