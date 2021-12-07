@@ -6,15 +6,17 @@
         <nuxt />
       </v-container>
     </v-main>
+    <hard-refresh-modal />
   </v-app>
 </template>
 
 <script>
 
 import layout from '~/mixins/layout'
+import HardRefreshModal from '~/components/hardRefreshModal'
 
 export default {
-  components: {},
+  components: { HardRefreshModal },
   mixins: [layout],
   data: () => ({}),
   computed: {},

@@ -99,7 +99,7 @@ export default {
   router: {
     mode: 'hash',
     // base: '/xc/',
-    base: './',
+    base: process.env.NODE_ENV === 'production' ? './' : '',
     middleware: ['auth']
   },
   vuetify: {
@@ -117,9 +117,9 @@ export default {
   */
   build: {
 
-    // filenames: {
-    //   chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].[contenthash].js')
-    // },
+    filenames: {
+      chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].128.[contenthash].js')
+    },
     parallel: true,
     plugins: [
       new MonacoEditorWebpackPlugin({
@@ -225,8 +225,7 @@ export default {
       /* workbox options */
       // publicPath: './_nuxt',
       assetsURLPattern: /\/_nuxt\//,
-      config: { debug: true },
-      enabled: true
+      config: { debug: true }
     },
 
     icon: { publicPath: './' },

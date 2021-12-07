@@ -3,7 +3,8 @@ export const state = () => ({
   template: null,
   templateC: 0,
   templateE: 0,
-  embed: false
+  embed: false,
+  hardRefresh: false
 })
 
 export const mutations = {
@@ -18,6 +19,9 @@ export const mutations = {
   },
   mutEmbed(state, e) {
     state.embed = e
+  },
+  mutHardRefresh(state, v) {
+    state.hardRefresh = v
   }
 }
 

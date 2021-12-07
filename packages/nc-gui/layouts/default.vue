@@ -543,11 +543,13 @@
     <change-env v-model="showChangeEnv" />
 
     <loader />
+    <hard-refresh-modal />
   </v-app>
   <v-app v-else>
     <v-overlay>
       <v-progress-circular indeterminate size="64" />
     </v-overlay>
+    <hard-refresh-modal />
   </v-app>
 </template>
 
@@ -566,9 +568,11 @@ import Snackbar from '~/components/snackbar'
 import Language from '~/components/utils/language'
 import Loader from '~/components/loader'
 import layout from '~/mixins/layout'
+import HardRefreshModal from '~/components/hardRefreshModal'
 
 export default {
   components: {
+    HardRefreshModal,
     Loader,
     ReleaseInfo,
     Language,
