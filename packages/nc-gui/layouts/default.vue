@@ -283,7 +283,7 @@
         <!--          mdi-cog-->
         <!--        </x-icon>-->
 
-        <notification class="mx-2" />
+        <!--        <notification class="mx-2" />-->
 
         <language class="ml-3" />
 

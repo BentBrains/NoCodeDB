@@ -394,7 +394,9 @@
             dense
             :class="{ 'advanced-border': overShieldIcon }"
           >
-            <v-list-item>
+            <v-list-item
+              class="pl-2"
+            >
               <v-list-item-title>
                 <!-- Settings -->
                 <span class="body-2 font-weight-medium">{{ $t('treeview.settings.title') }}</span>
@@ -417,87 +419,88 @@
                 </v-tooltip>
               </v-list-item-title>
             </v-list-item>
+            <div class="ml-1">
+              <template v-if="_isUIAllowed('treeViewProjectSettings')">
+                <v-tooltip bottom>
+                  <template #activator="{ on }">
+                    <v-list-item dense class="body-2 nc-settings-appstore" @click="appsTabAdd" v-on="on">
+                      <v-list-item-icon>
+                        <v-icon x-small>
+                          mdi-storefront-outline
+                        </v-icon>
+                      </v-list-item-icon>
+                      <!-- App Store -->
+                      <v-list-item-title>
+                        <span class="font-weight-regular caption">{{
+                          $t('treeview.app_store')
+                        }}</span>
+                      </v-list-item-title>
+                    </v-list-item>
+                  </template>
+                  <!-- App Store -->
+                  {{ $t('treeview.app_store') }}
+                </v-tooltip>
 
-            <template v-if="_isUIAllowed('treeViewProjectSettings')">
-              <v-tooltip bottom>
-                <template #activator="{ on }">
-                  <v-list-item dense class="body-2 nc-settings-appstore" @click="appsTabAdd" v-on="on">
-                    <v-list-item-icon>
-                      <v-icon x-small>
-                        mdi-storefront-outline
-                      </v-icon>
-                    </v-list-item-icon>
-                    <!-- App Store -->
-                    <v-list-item-title>
-                      <span class="font-weight-regular caption">{{
-                        $t('treeview.app_store')
-                      }}</span>
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
-                <!-- App Store -->
-                {{ $t('treeview.app_store') }}
-              </v-tooltip>
+                <v-tooltip bottom>
+                  <template #activator="{ on }">
+                    <v-list-item dense class="body-2 nc-settings-teamauth" @click="rolesTabAdd" v-on="on">
+                      <v-list-item-icon>
+                        <v-icon x-small>
+                          mdi-account-group
+                        </v-icon>
+                      </v-list-item-icon>
+                      <!-- Team & Auth -->
+                      <v-list-item-title>
+                        <span class="font-weight-regular caption">{{
+                          $t('treeview.team_n_auth.title')
+                        }}</span>
+                      </v-list-item-title>
+                    </v-list-item>
+                  </template>
+                  <!-- Roles & Users Management -->
+                  {{ $t('treeview.team_n_auth.tooltip') }}
+                </v-tooltip>
+                <v-tooltip bottom>
+                  <template #activator="{ on }">
+                    <v-list-item dense class="body-2 nc-settings-projmeta" @click="disableOrEnableModelTabAdd" v-on="on">
+                      <v-list-item-icon>
+                        <v-icon x-small>
+                          mdi-table-multiple
+                        </v-icon>
+                      </v-list-item-icon>
+                      <!-- Project Metadata -->
+                      <v-list-item-title>
+                        <span class="font-weight-regular caption">{{
+                          $t('treeview.project_metadata.title')
+                        }}</span>
+                      </v-list-item-title>
+                    </v-list-item>
+                  </template>
+                  <!-- Meta Management -->
+                  {{ $t('treeview.project_metadata.tooltip') }}
+                </v-tooltip>
 
-              <v-tooltip bottom>
-                <template #activator="{ on }">
-                  <v-list-item dense class="body-2 nc-settings-teamauth" @click="rolesTabAdd" v-on="on">
-                    <v-list-item-icon>
-                      <v-icon x-small>
-                        mdi-account-group
-                      </v-icon>
-                    </v-list-item-icon>
-                    <!-- Team & Auth -->
-                    <v-list-item-title>
-                      <span class="font-weight-regular caption">{{
-                        $t('treeview.team_n_auth.title')
-                      }}</span>
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
-                <!-- Roles & Users Management -->
-                {{ $t('treeview.team_n_auth.tooltip') }}
-              </v-tooltip>
-              <v-tooltip bottom>
-                <template #activator="{ on }">
-                  <v-list-item dense class="body-2 nc-settings-projmeta" @click="disableOrEnableModelTabAdd" v-on="on">
-                    <v-list-item-icon>
-                      <v-icon x-small>
-                        mdi-table-multiple
-                      </v-icon>
-                    </v-list-item-icon>
-                    <!-- Project Metadata -->
-                    <v-list-item-title>
-                      <span class="font-weight-regular caption">{{
-                        $t('treeview.project_metadata.title')
-                      }}</span>
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
-                <!-- Meta Management -->
-                {{ $t('treeview.project_metadata.tooltip') }}
-              </v-tooltip>
-
-              <v-tooltip bottom>
-                <template #activator="{ on }">
-                  <v-list-item dense class="body-2 nc-settings-audit" @click="openAuditTab" v-on="on">
-                    <v-list-item-icon>
-                      <v-icon x-small>
-                        mdi-notebook-outline
-                      </v-icon>
-                    </v-list-item-icon>
-                    <!-- Project Metadata -->
-                    <v-list-item-title>
-                      <span class="font-weight-regular caption">{{
-                        $t('treeview.audit.title')
-                      }}</span>
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
-                <!-- Meta Management -->
-                {{ $t('treeview.audit.tooltip') }}
-              </v-tooltip>
-            </template>
+                <v-tooltip bottom>
+                  <template #activator="{ on }">
+                    <v-list-item dense class="body-2 nc-settings-audit" @click="openAuditTab" v-on="on">
+                      <v-list-item-icon>
+                        <v-icon x-small>
+                          mdi-notebook-outline
+                        </v-icon>
+                      </v-list-item-icon>
+                      <!-- Project Metadata -->
+                      <v-list-item-title>
+                        <span class="font-weight-regular caption">{{
+                          $t('treeview.audit.title')
+                        }}</span>
+                      </v-list-item-title>
+                    </v-list-item>
+                  </template>
+                  <!-- Meta Management -->
+                  {{ $t('treeview.audit.tooltip') }}
+                </v-tooltip>
+              </template>
+            </div>
           </v-list>
           <v-divider />
 
@@ -552,10 +555,10 @@
           <!--          <v-divider></v-divider>-->
 
           <v-list v-if="_isUIAllowed('previewAs') || previewAs" dense>
-            <v-list-item>
+            <v-list-item class="pl-2">
               <!-- Preview as -->
               <span class="body-2 font-weight-medium">{{ $t('treeview.preview_as') }}</span>
-              <v-icon small class="ml-1">
+              <v-icon small class="">
                 mdi-drama-masks
               </v-icon>
               <!--                <v-icon small>mdi-menu-down</v-icon>-->
